@@ -1490,7 +1490,7 @@ export default function App() {
             <div
               className="absolute inset-0 -z-20 bg-cover bg-center"
               style={{
-                backgroundImage: "url('/website/public/images/supermarket-pos-02.jpg')",
+                backgroundImage: "url('images/supermarket-pos-02.jpg')",
               }}
             />
 

@@ -1,0 +1,10 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+body{@apply bg-slate-100 text-slate-800 antialiased overflow-hidden}
+.btn{@apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition active:scale-95 disabled:opacity-50}
+.btn-p{@apply btn bg-brand-500 text-white shadow-lg shadow-brand-500/25 hover:bg-brand-600}
+.btn-g{@apply btn border border-slate-200 bg-white text-slate-700 hover:bg-slate-50}
+.btn-d{@apply btn bg-rose-500 text-white hover:bg-rose-600}
+.inp{@apply w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15}
+.card{@apply rounded-2xl border border-white/60 bg-white p-5 shadow-[0_2px_20px_-8px_rgba(15,23,42,.15)] transition hover:shadow-[0_8px_30px_-10px_rgba(15,23,42,.2)]}
+.sk{@apply relative overflow-hidden rounded-lg bg-slate-200}.sk:after{content:'';@apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent animate-[shimmer_1.4s_infinite]}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{@apply rounded bg-slate-300}

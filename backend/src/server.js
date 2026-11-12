@@ -369,7 +369,7 @@ app.get(
   auth,
   entitled,
   wrap(async (q, s) => {
-    const dir = path.join(__dirname, "storage", "installers");
+    const dir = path.join(  __dirname,  "storage",  "installers",  "ProfitSense-Setup.exe");
 
 if (!fs.existsSync(dir)) {
   throw err(

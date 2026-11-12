@@ -363,26 +363,44 @@ app.delete(
   }),
 );
 
+
 app.get(
   "/api/download",
   auth,
   entitled,
   wrap(async (q, s) => {
-    const dir = path.join(__dirname, "../storage/installers"),
-      f = fs
-        .readdirSync(dir)
-        .filter((x) => /\.exe$/i.test(x))
-        .sort()
-        .pop();
-    if (!f)
+    const dir = path.join(__dirname, "storage", "installers");
+
+    if (!fs.existsSync(dir)) {
       throw err(
         404,
-        "The Windows installer is not available yet. Please contact support.",
+        "The Windows installer is not available yet. Please contact support."
       );
-    M.Download.create({ userId: q.user._id, version: f, ip: q.ip });
-    s.download(path.join(dir, f));
-  }),
+    }
+
+    const files = fs.readdirSync(dir)
+      .filter((file) => /\.exe$/i.test(file))
+      .sort();
+
+    const installer = files.pop();
+
+    if (!installer) {
+      throw err(
+        404,
+        "The Windows installer is not available yet. Please contact support."
+      );
+    }
+
+    M.Download.create({
+      userId: q.user._id,
+      version: installer,
+      ip: q.ip,
+    }).catch(console.error);
+
+    s.download(path.join(dir, installer));
+  })
 );
+
 
 const num = (v, n) => {
     const x = parseFloat(String(v).replace(/,/g, ""));

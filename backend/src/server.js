@@ -371,25 +371,24 @@ app.get(
   wrap(async (q, s) => {
     const dir = path.join(__dirname, "storage", "installers");
 
-    if (!fs.existsSync(dir)) {
-      throw err(
-        404,
-        "The Windows installer is not available yet. Please contact support."
-      );
-    }
+if (!fs.existsSync(dir)) {
+  throw err(
+    404,
+    "The Windows installer is not available yet. Please contact support."
+  );
+}
 
-    const files = fs.readdirSync(dir)
-      .filter((file) => /\.exe$/i.test(file))
-      .sort();
+const installer = fs.readdirSync(dir)
+  .filter((file) => /\.exe$/i.test(file))
+  .sort()
+  .pop();
 
-    const installer = files.pop();
-
-    if (!installer) {
-      throw err(
-        404,
-        "The Windows installer is not available yet. Please contact support."
-      );
-    }
+if (!installer) {
+  throw err(
+    404,
+    "The Windows installer is not available yet. Please contact support."
+  );
+}
 
     M.Download.create({
       userId: q.user._id,

@@ -364,39 +364,52 @@ app.delete(
 );
 
 
+
 app.get(
   "/api/download",
   auth,
   entitled,
   wrap(async (q, s) => {
-    const dir = path.join(  __dirname,  "storage",  "installers",  "ProfitSense-Setup.exe");
+    const installer = path.join(
+      __dirname,
+      "storage",
+      "installers",
+      "ProfitSense-Setup.exe"
+    );
 
-if (!fs.existsSync(dir)) {
-  throw err(
-    404,
-    "The Windows installer is not available yet. Please contact support."
-  );
-}
+    // Check whether the installer exists
+    if (!fs.existsSync(installer)) {
+      throw err(
+        404,
+        "Windows installer not found on the server."
+      );
+    }
 
-const installer = fs.readdirSync(dir)
-  .filter((file) => /\.exe$/i.test(file))
-  .sort()
-  .pop();
+    // Make sure it is actually a file
+    if (!fs.statSync(installer).isFile()) {
+      throw err(
+        404,
+        "Invalid Windows installer path."
+      );
+    }
 
-if (!installer) {
-  throw err(
-    404,
-    "The Windows installer is not available yet. Please contact support."
-  );
-}
-
+    // Record download
     M.Download.create({
       userId: q.user._id,
-      version: installer,
+      version: "ProfitSense-Setup.exe",
       ip: q.ip,
     }).catch(console.error);
 
-    s.download(path.join(dir, installer));
+    // Send installer to user
+    return s.download(
+      installer,
+      "ProfitSense-Setup.exe",
+      (error) => {
+        if (error) {
+          console.error("Installer download error:", error);
+        }
+      }
+    );
   })
 );
 

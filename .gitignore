@@ -9,7 +9,7 @@ desktop/dist/
 desktop/out/
 
 # Windows installers
-# *.exe
+*.exe
 *.msi
 
 # Environment variables and secrets

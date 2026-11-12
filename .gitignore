@@ -9,8 +9,8 @@ desktop/dist/
 desktop/out/
 
 # Windows installers
-*.exe
-*.msi
+!storage/installers/*.exe
+!storage/installers/*.msi
 
 # Environment variables and secrets
 .env

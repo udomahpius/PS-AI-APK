@@ -18,8 +18,8 @@ import { Connections, useAutoSync } from "./connections.jsx";
 const cfgP = window.ps
   ? window.ps.cfg()
   : Promise.resolve({
-      api: "http://localhost:4000",
-      site: "http://localhost:5173",
+      api: "https://ps-ai-apk.onrender.com",
+      site: "https://ps-ai-apk-eight.vercel.app",
       deviceId: "dev",
       deviceName: "browser",
     });

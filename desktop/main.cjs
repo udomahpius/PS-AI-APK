@@ -13,8 +13,10 @@ const {
   DB = require("./connectors.cjs");
 
 // API = the backend (accounts, data). SITE = the public website (sign-up, billing).
-const API = process.env.PROFITSENSE_API || "http://localhost:4000";
-const SITE = process.env.PROFITSENSE_SITE || "http://localhost:5173";
+// const API = process.env.PROFITSENSE_API || "http://localhost:4000";
+// const SITE = process.env.PROFITSENSE_SITE || "http://localhost:5173";
+const API = process.env.PROFITSENSE_API || "https://ps-ai-apk.onrender.com";
+const SITE = process.env.PROFITSENSE_SITE || "https://ps-ai-apk-eight.vercel.app";
 
 const deviceId = () => {
   const f = path.join(app.getPath("userData"), "device.id");

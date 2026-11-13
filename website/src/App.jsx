@@ -15,7 +15,7 @@ const LABEL = {
 const Logo = () => (
   <div className="flex items-center gap-2 font-extrabold text-xl tracking-tight">
     <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-700 text-white shadow-lg shadow-brand-500/20">
-      {/* ₦ */}
+      📊
     </span>
     ProfitSense <span className="text-brand-500">AI</span>
   </div>

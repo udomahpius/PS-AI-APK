@@ -374,32 +374,9 @@ function Account() {
       setM("login");
     });
 
-  const dl = () =>
-    run(async () => {
-      const r = await fetch(BASE + "/api/download", {
-        headers: { Authorization: "Bearer " + localStorage.t },
-      });
-
-      if (!r.ok) {
-        let error = "Download failed.";
-        try {
-          error = (await r.json()).error || error;
-        } catch {}
-        throw new Error(error);
-      }
-
-      const blob = await r.blob();
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-
-      link.href = url;
-      link.download = "ProfitSenseAI-Setup.exe";
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-    });
+  const dl = () => {
+    window.location.href = "https://github.com/udomahpius/PS-AI-APK/commits/v1.0.0";
+  };
 
   const signOut = () => {
     localStorage.removeItem("t");

@@ -1,32 +1,29 @@
-
 # Dependencies
 node_modules/
 **/node_modules/
 
-# Electron generated files
+# Electron build output (installers and unpacked app)
 desktop/release/
 desktop/dist/
 desktop/out/
 
-# Windows installers
-# !storage/installers/*.exe
-# !storage/installers/*.msi
+# Windows installers (host these on GitHub Releases instead)
+storage/installers/*.exe
+storage/installers/*.msi
+*.exe
+*.msi
+*.asar
 
 # Environment variables and secrets
 .env
 .env.*
 !.env.example
+backend/.env
 
 # Logs
 *.log
 
-# Temporary files
+# Temporary and system files
 *.tmp
 .DS_Store
-# Environment variables
-.env
-.env.*
-!.env.example
-
-# Explicit backend protection
-backend/.env
+Thumbs.db

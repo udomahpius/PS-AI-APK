@@ -375,7 +375,7 @@ function Account() {
     });
 
   const dl = () => {
-    window.location.href = "https://github.com/udomahpius/PS-AI-APK/commits/v1.0.0";
+    window.location.href = "https://github.com/udomahpius/PS-AI-APK/releases/download/v1.0.0/ProfitSenseAI-Setup-2.0.0.exe";
   };
 
   const signOut = () => {
